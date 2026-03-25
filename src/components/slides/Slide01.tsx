@@ -61,7 +61,7 @@ export default function Slide01() {
           <motion.span
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
-            transition={{ duration: 0.6, delay: 1.2, ease: "easeOut" }}
+            transition={{ duration: 0.6, delay: 1.2, ease: [0, 0, 0.2, 1] }}
             className="absolute -bottom-2 left-0 w-full h-2 bg-[#DA7756] rounded-full origin-left"
           />
         </span>
