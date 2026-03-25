@@ -1,101 +1,121 @@
-import Image from "next/image";
+"use client";
+
+import { useState, useEffect, useCallback } from "react";
+import { AnimatePresence } from "framer-motion";
+import SlideWrapper from "@/components/SlideWrapper";
+import ProgressBar from "@/components/ProgressBar";
+import SlideCounter from "@/components/SlideCounter";
+import OverviewGrid from "@/components/OverviewGrid";
+
+import Slide01 from "@/components/slides/Slide01";
+import Slide02 from "@/components/slides/Slide02";
+import Slide03 from "@/components/slides/Slide03";
+import Slide04 from "@/components/slides/Slide04";
+import Slide05 from "@/components/slides/Slide05";
+import Slide06 from "@/components/slides/Slide06";
+import Slide07 from "@/components/slides/Slide07";
+import Slide08 from "@/components/slides/Slide08";
+import Slide09 from "@/components/slides/Slide09";
+import Slide10 from "@/components/slides/Slide10";
+import Slide11 from "@/components/slides/Slide11";
+import Slide12 from "@/components/slides/Slide12";
+import Slide13 from "@/components/slides/Slide13";
+import Slide14 from "@/components/slides/Slide14";
+import Slide15 from "@/components/slides/Slide15";
+import Slide16 from "@/components/slides/Slide16";
+import Slide17 from "@/components/slides/Slide17";
+import Slide18 from "@/components/slides/Slide18";
+import Slide19 from "@/components/slides/Slide19";
+import Slide20 from "@/components/slides/Slide20";
+import Slide21 from "@/components/slides/Slide21";
+import Slide22 from "@/components/slides/Slide22";
+import Slide23 from "@/components/slides/Slide23";
+import Slide24 from "@/components/slides/Slide24";
+import Slide25 from "@/components/slides/Slide25";
+import Slide26 from "@/components/slides/Slide26";
+
+const slides = [
+  Slide01, Slide02, Slide03, Slide04, Slide05,
+  Slide06, Slide07, Slide08, Slide09, Slide10,
+  Slide11, Slide12, Slide13, Slide14, Slide15,
+  Slide16, Slide17, Slide18, Slide19, Slide20,
+  Slide21, Slide22, Slide23, Slide24, Slide25,
+  Slide26,
+];
+
+const TOTAL = slides.length;
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [current, setCurrent] = useState(0);
+  const [direction, setDirection] = useState(0);
+  const [showOverview, setShowOverview] = useState(false);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+  const goTo = useCallback((index: number) => {
+    if (index === current) return;
+    setDirection(index > current ? 1 : -1);
+    setCurrent(index);
+    setShowOverview(false);
+  }, [current]);
+
+  const next = useCallback(() => {
+    if (current < TOTAL - 1) {
+      setDirection(1);
+      setCurrent((c) => c + 1);
+    }
+  }, [current]);
+
+  const prev = useCallback(() => {
+    if (current > 0) {
+      setDirection(-1);
+      setCurrent((c) => c - 1);
+    }
+  }, [current]);
+
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (showOverview && e.key === "Escape") {
+        setShowOverview(false);
+        return;
+      }
+      switch (e.key) {
+        case "ArrowRight":
+        case " ":
+          e.preventDefault();
+          next();
+          break;
+        case "ArrowLeft":
+          e.preventDefault();
+          prev();
+          break;
+        case "Escape":
+          setShowOverview(true);
+          break;
+      }
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [next, prev, showOverview]);
+
+  const CurrentSlide = slides[current];
+
+  return (
+    <main className="relative w-screen h-screen overflow-hidden bg-[#FAF9F7]">
+      <ProgressBar current={current} total={TOTAL} />
+      <AnimatePresence custom={direction} mode="wait">
+        <SlideWrapper key={current} direction={direction}>
+          <CurrentSlide />
+        </SlideWrapper>
+      </AnimatePresence>
+      <SlideCounter current={current} total={TOTAL} />
+      <AnimatePresence>
+        {showOverview && (
+          <OverviewGrid
+            current={current}
+            onSelect={goTo}
+            onClose={() => setShowOverview(false)}
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        )}
+      </AnimatePresence>
+    </main>
   );
 }
