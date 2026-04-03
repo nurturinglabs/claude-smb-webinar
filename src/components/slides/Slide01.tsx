@@ -54,7 +54,7 @@ export default function Slide01() {
         transition={{ duration: 0.7, delay: 0.4 }}
         className="text-5xl md:text-7xl font-heading font-extrabold text-[#191918] text-center leading-tight relative z-10"
       >
-        SuperPower
+        Claude - SuperPower
         <br />
         <span className="relative inline-block">
           for your Business
@@ -67,15 +67,6 @@ export default function Slide01() {
         </span>
       </motion.h1>
 
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.8 }}
-        className="text-xl text-[#6B6B65] mt-8 font-body text-center max-w-xl leading-relaxed"
-      >
-        How <span className="text-[#DA7756] font-semibold">Claude AI</span> can automate your business tasks
-        — invoices, sales, payments, and more.
-      </motion.p>
 
       <motion.div
         initial={{ opacity: 0, y: 15 }}
@@ -97,14 +88,6 @@ export default function Slide01() {
         </div>
       </motion.div>
 
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 1.4 }}
-        className="text-sm text-[#6B6B65] font-body mt-6"
-      >
-        Claude Cowork for Small & Medium Businesses
-      </motion.p>
     </div>
   );
 }

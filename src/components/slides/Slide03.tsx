@@ -27,7 +27,7 @@ const voiceTools = [
   { name: "ElevenLabs", highlighted: false },
   { name: "Smallest AI", highlighted: true },
   { name: "Sarvam AI", highlighted: false },
-  { name: "Bhashini", highlighted: false },
+  { name: "Cartesia", highlighted: false },
 ];
 
 export default function Slide03() {

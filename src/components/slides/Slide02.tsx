@@ -96,10 +96,7 @@ export default function Slide02() {
         className="text-center"
       >
         <p className="text-[#191918] font-body text-lg">
-          ಇದು magic ಅಲ್ಲ — ಇದು technology.
-        </p>
-        <p className="text-[#6B6B65] font-body text-sm mt-1">
-          And today it costs less than hiring one part-time helper.
+          Biggest Technological revolution is happening as we speak
         </p>
       </motion.div>
     </div>

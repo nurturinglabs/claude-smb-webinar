@@ -80,14 +80,6 @@ export default function Slide04() {
         </div>
       </motion.div>
 
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.4, delay: 1.1 }}
-        className="text-sm text-[#6B6B65] font-body mt-4"
-      >
-        No installation for Chat. No coding ever. · Chat ಗೆ install ಬೇಕಿಲ್ಲ. Coding ಬೇಕಿಲ್ಲ.
-      </motion.p>
     </div>
   );
 }
