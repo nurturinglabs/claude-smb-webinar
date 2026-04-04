@@ -3,16 +3,16 @@
 import { motion } from "framer-motion";
 
 const career = [
-  { year: "Early career", text: "Support Executive", sub: "Customer operations, process management", active: false },
+  { year: "Early career", text: "Support Engineer", sub: "Customer operations, process management", active: false },
   { year: "Mid career", text: "Program Manager → Data Analyst", sub: "Enterprise projects, analytics systems", active: false },
   { year: "Recent years", text: "Data Engineer", sub: "", active: false },
-  { year: "2026 — Now", text: "AI Entrepreneur", sub: "NurturingLabs · Vibe MKE · This webinar", active: true },
+  { year: "2026 — Now", text: "AI Entrepreneur", sub: "HaagLabs · Vibe MKE · This webinar", active: true },
 ];
 
 const journey = [
   { num: "01", month: "Dec 2025 — Christmas Holidays", heading: "Built a web app with Voice AI for an Ice Cream store", detail: "Experimenting during holidays — just to see what AI could actually build", active: false },
   { num: "02", month: "Jan 2026", heading: "Built a full AI Voice Agent for the same shop", detail: "It worked. That gave me the confidence to keep going.", active: false },
-  { num: "03", month: "Jan – Feb 2026", heading: "Built Voice AI agents for many more businesses", detail: "Still testing, still learning — built agents for restaurant, dental, apartments, admissions. NurturingLabs was taking shape.", active: false },
+  { num: "03", month: "Jan – Feb 2026", heading: "Built Voice AI agents for many more businesses", detail: "Still testing, still learning — built agents for restaurant, dental, apartments, admissions. HaagLabs was taking shape.", active: false },
   { num: "04", month: "March 2026 — The Pivot", heading: "Met local business owners. Changed everything.", detail: "First real customer conversations. They needed broader AI help for their business. Pivoted to full AI implementation.", active: true },
 ];
 
@@ -30,7 +30,7 @@ export default function Slide40() {
         </motion.h1>
 
         <motion.p initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.4 }} className="font-body italic mb-11" style={{ fontSize: 15, color: "rgba(255,255,255,0.3)" }}>
-          NurturingLabs · Data Engineer · AI Entrepreneur
+          HaagLabs · Data Engineer · AI Entrepreneur
         </motion.p>
 
         <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.55 }}>
@@ -62,7 +62,7 @@ export default function Slide40() {
         <motion.h2 initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.35 }} className="font-body font-bold text-white mb-9" style={{ fontSize: 26, lineHeight: 1.2 }}>
           I did not plan to start a company. I just started building.
           <br />
-          90 days later — <span className="italic text-[#D97757]">NurturingLabs was born.</span>
+          90 days later — <span className="italic text-[#D97757]">HaagLabs was born.</span>
         </motion.h2>
 
         <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.55 }} className="flex flex-col">

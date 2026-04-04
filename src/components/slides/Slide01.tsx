@@ -76,7 +76,7 @@ export default function Slide01() {
       >
         <div className="bg-[#EDE8E0] border border-[#DDD8CE] rounded-xl px-5 py-3 text-center">
           <p className="text-xs text-[#6B6B65] font-body">Host</p>
-          <p className="text-sm font-heading font-bold text-[#191918]">Munde Banni</p>
+          <p className="text-sm font-heading font-bold text-[#191918]">Munde Banni / Umesh</p>
         </div>
         <div className="bg-[#EDE8E0] border border-[#DDD8CE] rounded-xl px-5 py-3 text-center">
           <p className="text-xs text-[#6B6B65] font-body">Duration</p>
