@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 
 const slideTitles = [
   "SuperPower for your Business",
-  "Your Host",
   "What is AI?",
   "7 Specialists → 1 Subscription",
   "Meet Claude",
