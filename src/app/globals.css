@@ -11,6 +11,17 @@ body {
   color: var(--foreground);
   background: var(--background);
   overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: pan-y;
+}
+
+/* Mobile: scale slides to fit viewport */
+@media (max-width: 767px) {
+  .slide-scale-wrapper {
+    transform-origin: top left;
+    width: 1280px;
+    height: 720px;
+  }
 }
 
 ::selection {

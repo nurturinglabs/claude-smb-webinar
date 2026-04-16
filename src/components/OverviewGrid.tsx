@@ -41,11 +41,11 @@ export default function OverviewGrid({ current, onSelect, onClose }: OverviewGri
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.25 }}
-      className="fixed inset-0 z-[100] bg-[#191918]/90 flex items-center justify-center p-8 overview-scroll overflow-y-auto"
+      className="fixed inset-0 z-[100] bg-[#191918]/90 flex items-center justify-center p-4 md:p-8 overview-scroll overflow-y-auto"
       onClick={onClose}
     >
       <div
-        className="grid grid-cols-5 gap-4 max-w-6xl w-full"
+        className="grid grid-cols-3 md:grid-cols-5 gap-2 md:gap-4 max-w-6xl w-full"
         onClick={(e) => e.stopPropagation()}
       >
         {slideTitles.map((title, i) => (

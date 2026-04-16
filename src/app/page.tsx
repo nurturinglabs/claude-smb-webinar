@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { AnimatePresence } from "framer-motion";
 import SlideWrapper from "@/components/SlideWrapper";
 import ProgressBar from "@/components/ProgressBar";
@@ -70,6 +70,37 @@ export default function Home() {
     }
   }, [current]);
 
+  // Touch swipe navigation
+  const touchStart = useRef<number | null>(null);
+  const touchEnd = useRef<number | null>(null);
+  const MIN_SWIPE = 50;
+
+  useEffect(() => {
+    const onTouchStart = (e: TouchEvent) => {
+      touchEnd.current = null;
+      touchStart.current = e.targetTouches[0].clientX;
+    };
+    const onTouchMove = (e: TouchEvent) => {
+      touchEnd.current = e.targetTouches[0].clientX;
+    };
+    const onTouchEnd = () => {
+      if (!touchStart.current || !touchEnd.current) return;
+      const distance = touchStart.current - touchEnd.current;
+      if (Math.abs(distance) > MIN_SWIPE) {
+        if (distance > 0) next();
+        else prev();
+      }
+    };
+    window.addEventListener("touchstart", onTouchStart, { passive: true });
+    window.addEventListener("touchmove", onTouchMove, { passive: true });
+    window.addEventListener("touchend", onTouchEnd);
+    return () => {
+      window.removeEventListener("touchstart", onTouchStart);
+      window.removeEventListener("touchmove", onTouchMove);
+      window.removeEventListener("touchend", onTouchEnd);
+    };
+  }, [next, prev]);
+
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => {
       if (showOverview && e.key === "Escape") {
@@ -105,6 +136,12 @@ export default function Home() {
           <CurrentSlide />
         </SlideWrapper>
       </AnimatePresence>
+      {/* Mobile tap zones */}
+      <div className="absolute inset-0 z-30 flex md:hidden pointer-events-none">
+        <div className="w-[30%] h-full pointer-events-auto" onClick={prev} />
+        <div className="w-[40%] h-full" />
+        <div className="w-[30%] h-full pointer-events-auto" onClick={next} />
+      </div>
       <SlideCounter current={current} total={TOTAL} />
       <AnimatePresence>
         {showOverview && (
